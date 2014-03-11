@@ -7,7 +7,6 @@ VAGRANT_SHARED=/vagrant
 PUPPET_PACKAGING_DIR=$VAGRANT_SHARED/packaging/vagrant
 
 # Useful commands we use
-PUPPET_MODULE_NAME=recordsproject
 RUN_PUPPET=$VAGRANT_HOME/run_puppet
 BOOTSTRAP=$PUPPET_PACKAGING_DIR/manifests/bootstrap.pp
 
