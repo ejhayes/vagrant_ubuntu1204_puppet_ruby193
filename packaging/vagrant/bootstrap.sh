@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Expected Arguments
-HOST=$1
-
 # Where is stuff located?
 PUPPET_DIR=/etc/puppet
 VAGRANT_HOME=/home/vagrant
@@ -27,11 +24,16 @@ apt-get update
 apt-get -y install python-software-properties
 apt-add-repository -y ppa:brightbox/ruby-ng
 apt-get update
-apt-get -y install git curl puppet ruby1.9.3 rubygems rake
+apt-get -y upgrade
+apt-get -y install git curl puppet ruby1.9.3 rubygems rake vim
+
+# http://ubuntuforums.org/showthread.php?t=971693
+perl -pi -e 's/(hosts:\s+)(.+)$/$1files mdns4_minimal [NOTFOUND=return] dns mdns4/' /etc/nsswitch.conf
 
 # Install bundler since it is needed
 echo '############ INSTALLING BUNDLER ############'
 gem install bundler --no-ri --no-rdoc
+gem install librarian-puppet --no-ri --no-rdoc
 
 # Default web directory
 mkdir -p /var/www
