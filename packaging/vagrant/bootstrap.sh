@@ -23,7 +23,10 @@ apt-get update
 apt-get -y install python-software-properties
 apt-add-repository -y ppa:brightbox/ruby-ng
 apt-get update
-apt-get -y upgrade
+
+# http://askubuntu.com/questions/146921/how-do-i-apt-get-y-dist-upgrade-without-a-grub-config-prompt
+DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
+
 apt-get -y install git curl puppet ruby1.9.3 rubygems rake vim
 
 # http://ubuntuforums.org/showthread.php?t=971693
